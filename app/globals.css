@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Sora", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F7F5F1;
+  color: #001164;
+}
+
+.candi-divider {
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent,
+    transparent 38px,
+    rgba(172, 17, 22, 0.18) 38px,
+    rgba(172, 17, 22, 0.18) 40px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
