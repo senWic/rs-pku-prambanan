@@ -22,11 +22,12 @@ export default function Hero() {
         <Image
           src="/direktur.png"
           alt="Direktur RS PKU Prambanan"
-          width={400}
-          height={600}
+          width={1080}
+          height={566}
+          quality={100}
           className="h-full w-auto object-contain object-bottom"
           priority
-        />
+          />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32">
