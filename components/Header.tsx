@@ -35,13 +35,13 @@ export default function Header() {
       {/* Main header */}
       <header className="border-b border-navy-100 bg-cream/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#" className="flex items-center gap-3">
+          <a href="#" className="flex items-center">
             <Image
               src="/logo-web.png"
-              alt="RS PKU Prambanan"
-              width={40}
-              height={40}
-              className="h-10 w-auto object-contain"
+              alt="RSU PKU Muhammadiyah Prambanan"
+              width={220}
+              height={60}
+              className="h-11 w-auto object-contain"
               priority
             />
           </a>
