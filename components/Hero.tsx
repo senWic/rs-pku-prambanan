@@ -3,8 +3,14 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-navy-700">
-      <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+  <section className="relative overflow-hidden">
+    {/* Tekstur pattern */}
+    <div
+      className="absolute inset-0 bg-repeat"
+      style={{ backgroundImage: "url('/footer-web1.png')", backgroundSize: "320px" }}
+    />
+    {/* Navy solid di kiri, fade ke transparan di 1/3 kanan */}
+    <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy to-navy/0 sm:[background-image:linear-gradient(to_right,theme(colors.navy.DEFAULT)_0%,theme(colors.navy.DEFAULT)_66%,transparent_100%)]" />
 
       {/* Foto Direktur */}
       <div className="pointer-events-none absolute bottom-0 right-6 h-[85%] w-auto sm:right-12">
