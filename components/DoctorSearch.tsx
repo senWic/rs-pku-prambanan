@@ -1,98 +1,136 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, Clock3 } from "lucide-react";
-import { RAW_SCHEDULE, groupByDoctor } from "@/lib/doctors";
+import { ChevronDown, RadioTower, TriangleAlert } from "lucide-react";
+import { groupByPoli, DAY_ORDER, DAY_DISPLAY, PoliGroup, ScheduleEntry } from "@/lib/doctors";
 
-const DAY_LABEL: Record<string, string> = {
-  SENIN: "Sen",
-  SELASA: "Sel",
-  RABU: "Rab",
-  KAMIS: "Kam",
-  JUMAT: "Jum",
-  SABTU: "Sab",
-  AKHAD: "Min",
+// Poliklinik yang tampil duluan (sebelum diklik "Tampilkan Semua")
+const PRIORITY_POLI = [
+  "POLI PENYAKIT DALAM",
+  "POLI ORTOPEDI",
+  "POLI SARAF",
+  "POLI ANAK",
+  "POLI REHABILITASI MEDIK",
+];
+
+type Props = {
+  schedule: ScheduleEntry[];
+  isLive: boolean;
 };
 
-export default function DoctorSearch() {
-  const [query, setQuery] = useState("");
-  const groups = useMemo(() => groupByDoctor(RAW_SCHEDULE), []);
+function PoliTable({ group }: { group: PoliGroup }) {
+  return (
+    <div className="mb-6 overflow-hidden rounded-2xl border border-navy-100">
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[820px] border-collapse text-sm">
+          <thead>
+            <tr>
+              <th className="bg-gradient-to-r from-navy-800 to-navy-600 px-5 py-3.5 text-left font-display text-sm font-semibold text-cream">
+                {group.poli}
+              </th>
+              {DAY_ORDER.map((d) => (
+                <th
+                  key={d}
+                  className="bg-emerald-600 px-4 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-white"
+                >
+                  {DAY_DISPLAY[d]}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {group.doctors.map((row, i) => (
+              <tr
+                key={row.doctor}
+                className={i % 2 === 0 ? "bg-white" : "bg-cream/50"}
+              >
+                <td className="px-5 py-3.5">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-navy-50 text-xs font-semibold text-navy-700">
+                      {row.doctor
+                        .replace(/^dr\.?g?\.?\s*/i, "")
+                        .charAt(0)
+                        .toUpperCase()}
+                    </div>
+                    <span className="font-medium text-navy-700">{row.doctor}</span>
+                  </div>
+                </td>
+                {DAY_ORDER.map((d) => (
+                  <td
+                    key={d}
+                    className="whitespace-nowrap px-4 py-3.5 text-center text-navy-700/70"
+                  >
+                    {row.byDay[d] ?? (
+                      <span className="text-navy-700/25">-</span>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
 
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return groups;
-    return groups.filter(
-      (g) =>
-        g.doctor.toLowerCase().includes(q) || g.poli.toLowerCase().includes(q)
-    );
-  }, [groups, query]);
+export default function DoctorSearch({ schedule, isLive }: Props) {
+  const [showAll, setShowAll] = useState(false);
+  const allGroups = useMemo(() => groupByPoli(schedule), [schedule]);
+
+  const priorityGroups = useMemo(
+    () =>
+      PRIORITY_POLI.map((p) => allGroups.find((g) => g.poli === p)).filter(
+        (g): g is PoliGroup => Boolean(g)
+      ),
+    [allGroups]
+  );
+
+  const restGroups = useMemo(
+    () => allGroups.filter((g) => !PRIORITY_POLI.includes(g.poli)),
+    [allGroups]
+  );
+
+  const visibleGroups = showAll ? [...priorityGroups, ...restGroups] : priorityGroups;
 
   return (
     <section id="jadwal-dokter" className="border-y border-navy-100 bg-white py-20">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+        <div className="mb-10 flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-maroon-600">
               Jadwal Dokter
             </p>
             <h2 className="font-display text-3xl font-semibold tracking-tight text-navy-700 sm:text-4xl">
-              Temukan dokter yang kamu butuhkan
+              Jadwal Praktik Dokter
             </h2>
           </div>
-          <p className="text-sm text-navy-700/50">{filtered.length} dokter/poli ditemukan</p>
-        </div>
 
-        <div className="relative mb-10 max-w-xl">
-          <Search
-            size={18}
-            className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-navy-700/40"
-          />
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Cari nama dokter atau poliklinik..."
-            className="w-full rounded-2xl border border-navy-100 bg-cream py-3.5 pl-11 pr-4 text-sm text-navy-700 outline-none transition focus:border-maroon-400 focus:ring-4 focus:ring-maroon-100"
-          />
-        </div>
-
-        <div className="grid gap-4 sm:grid-cols-2">
-          {filtered.map((g) => (
-            <div
-              key={`${g.doctor}-${g.poli}`}
-              className="group rounded-2xl border border-navy-100 p-5 transition hover:border-maroon-200 hover:shadow-[0_8px_30px_rgba(0,17,100,0.06)]"
-            >
-              <div className="mb-3 flex items-start justify-between gap-3">
-                <div>
-                  <h3 className="font-display text-base font-semibold leading-snug text-navy-700">
-                    {g.doctor}
-                  </h3>
-                  <p className="mt-0.5 text-xs font-medium uppercase tracking-wide text-maroon-600">
-                    {g.poli}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-1.5">
-                {g.schedule.map((s, i) => (
-                  <span
-                    key={i}
-                    className="inline-flex items-center gap-1 rounded-full bg-navy-50 px-2.5 py-1 text-[11px] font-medium text-navy-700"
-                  >
-                    <Clock3 size={11} className="text-navy-700/40" />
-                    {DAY_LABEL[s.day]} {s.start}-{s.end}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-
-          {filtered.length === 0 && (
-            <p className="col-span-2 py-10 text-center text-sm text-navy-700/50">
-              Tidak ada dokter/poli yang cocok dengan pencarian.
-            </p>
+          {isLive ? (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700">
+              <RadioTower size={13} /> Data langsung dari sistem RS
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-medium text-amber-700">
+              <TriangleAlert size={13} /> Menampilkan data cadangan (sumber sedang tidak terjangkau)
+            </span>
           )}
         </div>
+
+        {visibleGroups.map((group) => (
+          <PoliTable key={group.poli} group={group} />
+        ))}
+
+        {!showAll && restGroups.length > 0 && (
+          <div className="mt-4 flex justify-center">
+            <button
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center gap-2 rounded-xl border border-navy-100 px-6 py-3 text-sm font-semibold text-navy-700 transition hover:border-maroon-300 hover:text-maroon-600"
+            >
+              Tampilkan Semua Poliklinik <ChevronDown size={16} />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
