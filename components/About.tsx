@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <section id="profil" className="bg-navy-700 py-20 text-cream">
@@ -7,21 +9,22 @@ export default function About() {
             Profil Rumah Sakit
           </p>
           <h2 className="font-display text-3xl font-semibold">
-            Berakar dari amanah masyarakat Prambanan
+            Melayani dengan nilai, berkembang bersama masyarakat.
           </h2>
           <p className="mt-5 text-sm leading-relaxed text-cream/70">
-            RS PKU Prambanan hadir sebagai bagian dari amal usaha kesehatan yang
-            mengutamakan pelayanan yang ramah, profesional, dan terjangkau bagi
-            masyarakat. Kami percaya bahwa kesehatan adalah amanah yang harus
-            dijaga bersama, dengan tenaga medis yang kompeten dan fasilitas
-            yang terus berkembang.
+          Rumah Sakit PKU Muhammadiyah Prambanan
+          adalah suatu amal usaha Muhammadiyah
+          Sebagai perwujudan dari iman dan amal sholeh
+          kepada Allah SWT serta menjadikannya
+          sebagai sarana ibadah. Berlandaskan semangat TAJDID, 
+          kami terus berkomitmen menghadirkan layanan kesehatan yang berkualitas, inovatif, dan mudah dijangkau melalui tenaga medis terpercaya serta fasilitas yang terus berkembang.
           </p>
 
           <dl className="mt-9 grid grid-cols-3 gap-6 border-t border-cream/15 pt-6">
             {[
               ["24", "Jam Layanan IGD"],
-              ["20+", "Dokter Spesialis"],
-              ["10+", "Tahun Melayani"],
+              ["18+", "Dokter Spesialis"],
+              ["6+", "Tahun Melayani"],
             ].map(([num, label]) => (
               <div key={label}>
                 <dt className="font-display text-2xl font-semibold text-maroon-400">
@@ -33,7 +36,14 @@ export default function About() {
           </dl>
         </div>
 
-        <div className="aspect-[4/3] rounded-xl border border-cream/15 bg-navy-800/60" />
+        <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-cream/15">
+          <Image
+            src="/profil.png"
+            alt="RS PKU Prambanan"
+            fill
+            className="object-cover"
+          />
+        </div>
       </div>
     </section>
   );
