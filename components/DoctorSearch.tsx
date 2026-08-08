@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { TriangleAlert } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { groupByPoli, DAY_ORDER, DAY_DISPLAY, PoliGroup, ScheduleEntry } from "@/lib/doctors";
 
 // Poliklinik yang tampil duluan (sebelum diklik "Tampilkan Semua")
