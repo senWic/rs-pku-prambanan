@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <footer
         id="kontak"
-        className="relative bg-navy-900 bg-center bg-cover bg-no-repeat py-16 text-cream"
+        className="relative bg-navy bg-center bg-cover bg-no-repeat py-16 text-cream"
         style={{ backgroundImage: "url('/footer-web1.png')" }}
       >
       <div className="mx-auto max-w-6xl px-6">
