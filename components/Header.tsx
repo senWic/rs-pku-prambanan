@@ -35,9 +35,14 @@ export default function Header() {
       <header className="border-b border-navy-100 bg-cream/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-navy-700">
-              <span className="font-display text-lg font-semibold text-cream">P</span>
-            </div>
+            <Image
+              src="/logo-web.png"
+              alt="RS PKU Prambanan"
+              width={40}
+              height={40}
+              className="h-10 w-auto object-contain"
+              priority
+            />
             <div className="leading-tight">
               <p className="font-display text-base font-semibold text-navy-700">
                 RS PKU Prambanan
