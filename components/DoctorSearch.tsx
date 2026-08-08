@@ -22,10 +22,10 @@ function PoliTable({ group }: { group: PoliGroup }) {
   return (
     <div className="mb-6 overflow-hidden rounded-2xl border border-navy-100">
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[820px] border-collapse text-sm">
+        <table className="w-full min-w-[820px] table-fixed border-collapse text-sm">
           <thead>
             <tr>
-              <th className="bg-gradient-to-r from-navy-800 to-navy-600 px-5 py-3.5 text-left font-display text-sm font-semibold text-cream">
+              <th className="w-[260px] bg-gradient-to-r from-navy-800 to-navy-600 px-5 py-3.5 text-left font-display text-sm font-semibold text-cream">
                 {group.poli}
               </th>
               {DAY_ORDER.map((d) => (
