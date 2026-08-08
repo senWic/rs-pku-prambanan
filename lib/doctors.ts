@@ -111,6 +111,15 @@ export const RAW_SCHEDULE: ScheduleEntry[] = [
 ];
 
 export const DAY_ORDER = ["SENIN", "SELASA", "RABU", "KAMIS", "JUMAT", "SABTU", "AKHAD"];
+export const DAY_DISPLAY: Record<string, string> = {
+  SENIN: "Senin",
+  SELASA: "Selasa",
+  RABU: "Rabu",
+  KAMIS: "Kamis",
+  JUMAT: "Jumat",
+  SABTU: "Sabtu",
+  AKHAD: "Minggu",
+};
 
 export type DoctorGroup = {
   doctor: string;
@@ -137,4 +146,41 @@ export function groupByDoctor(entries: ScheduleEntry[]): DoctorGroup[] {
       ),
     }))
     .sort((a, b) => a.doctor.localeCompare(b.doctor));
+}
+
+export type PoliRow = {
+  doctor: string;
+  byDay: Record<string, string | null>; // day -> "08:00 - 14:00" or null
+};
+
+export type PoliGroup = {
+  poli: string;
+  doctors: PoliRow[];
+};
+
+// Groups the schedule by poliklinik, each doctor becomes one row,
+// and each day of the week becomes one column (time range or "-").
+export function groupByPoli(entries: ScheduleEntry[]): PoliGroup[] {
+  const poliMap = new Map<string, Map<string, PoliRow>>();
+
+  for (const e of entries) {
+    if (!poliMap.has(e.poli)) poliMap.set(e.poli, new Map());
+    const doctorMap = poliMap.get(e.poli)!;
+
+    if (!doctorMap.has(e.doctor)) {
+      const byDay: Record<string, string | null> = {};
+      DAY_ORDER.forEach((d) => (byDay[d] = null));
+      doctorMap.set(e.doctor, { doctor: e.doctor, byDay });
+    }
+    doctorMap.get(e.doctor)!.byDay[e.day] = `${e.start} - ${e.end}`;
+  }
+
+  return Array.from(poliMap.entries())
+    .map(([poli, doctorMap]) => ({
+      poli,
+      doctors: Array.from(doctorMap.values()).sort((a, b) =>
+        a.doctor.localeCompare(b.doctor)
+      ),
+    }))
+    .sort((a, b) => a.poli.localeCompare(b.poli));
 }
