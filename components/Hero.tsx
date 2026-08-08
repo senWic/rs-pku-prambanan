@@ -5,18 +5,18 @@ export default function Hero() {
   return (
   <section className="relative overflow-hidden bg-navy">
   {/* Tekstur pattern */}
-  <div
-    className="absolute inset-0 bg-repeat opacity-70"
-    style={{ backgroundImage: "url('/footer-web1.png')", backgroundSize: "600px" }}
-  />
-  {/* Navy menyatu ke pattern (multiply), solid di kiri fade transparan di 1/3 kanan */}
-  <div
-    className="absolute inset-0 mix-blend-multiply"
-    style={{
-      backgroundImage:
-        "linear-gradient(to right, #001164 0%, #001164 66%, transparent 100%)",
-    }}
-  />
+      <div
+        className="absolute inset-0 bg-repeat opacity-70"
+        style={{ backgroundImage: "url('/footer-web1.png')" }}
+      />
+      {/* Navy menyatu ke pattern (multiply), solid di kiri fade transparan mulai 20% */}
+      <div
+        className="absolute inset-0 mix-blend-multiply"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, #001164 0%, #001164 20%, transparent 100%)",
+        }}
+      />
       {/* Foto Direktur */}
       <div className="pointer-events-none absolute bottom-0 right-6 h-[85%] w-auto sm:right-12">
         <Image
