@@ -44,14 +44,6 @@ export default function Header() {
               className="h-10 w-auto object-contain"
               priority
             />
-            <div className="leading-tight">
-              <p className="font-display text-base font-semibold text-navy-700">
-                RS PKU Prambanan
-              </p>
-              <p className="text-[11px] uppercase tracking-wider text-maroon-600">
-                Melayani dengan Amanah
-              </p>
-            </div>
           </a>
 
           <nav className="hidden items-center gap-8 md:flex">
