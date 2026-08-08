@@ -31,7 +31,7 @@ function PoliTable({ group }: { group: PoliGroup }) {
               {DAY_ORDER.map((d) => (
                 <th
                   key={d}
-                  className="bg-maroon-600 px-4 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-white"
+                  className="w-[110px] bg-maroon-600 px-2 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-white"
                 >
                   {DAY_DISPLAY[d]}
                 </th>
@@ -58,7 +58,7 @@ function PoliTable({ group }: { group: PoliGroup }) {
                 {DAY_ORDER.map((d) => (
                   <td
                     key={d}
-                    className="whitespace-nowrap px-4 py-3.5 text-center text-navy-700/70"
+                    className="whitespace-nowrap px-2 py-3.5 text-center text-xs text-navy-700/70"
                   >
                     {row.byDay[d] ?? (
                       <span className="text-navy-700/25">-</span>
