@@ -32,16 +32,14 @@ export default function Hero() {
 
       <div className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <div className="max-w-xl">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-maroon-400">
+          <p className="mb-4 text-s font-semibold uppercase tracking-[0.2em] text-maroon-400">
             RS PKU Prambanan
           </p>
           <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-cream sm:text-5xl">
-            Kesehatan yang dijaga dengan amanah.
+            Melayani dengan profesional, sepenuh hati, dan penuh kepedulian.
           </h1>
           <p className="mt-6 text-base leading-relaxed text-cream/75">
-            Melayani rawat jalan, rawat inap, dan gawat darurat 24 jam untuk
-            masyarakat Prambanan dan sekitarnya — dengan tenaga medis yang
-            profesional dan pelayanan yang menenangkan.
+           Dengan dedikasi dan nilai amanah, kami hadir menghadirkan pelayanan kesehatan yang profesional, ikhlas, dan ramah untuk Anda.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-3">
@@ -52,10 +50,10 @@ export default function Hero() {
               <CalendarSearch size={16} /> Lihat Jadwal Dokter
             </a>
             <a
-              href="#profil"
+              href="https://wa.me/6289505699944"
               className="inline-flex items-center gap-2 rounded-xl border border-cream/30 px-6 py-3 text-sm font-semibold text-cream transition hover:bg-cream/10"
             >
-              Tentang Kami <ArrowRight size={16} />
+              Hubungi Kami <ArrowRight size={16} />
             </a>
           </div>
         </div>
