@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Phone, MessageCircle, Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { label: "Beranda", href: "#" },
