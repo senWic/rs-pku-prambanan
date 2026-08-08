@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ChevronDown, RadioTower, TriangleAlert } from "lucide-react";
+import { TriangleAlert } from "lucide-react";
 import { groupByPoli, DAY_ORDER, DAY_DISPLAY, PoliGroup, ScheduleEntry } from "@/lib/doctors";
 
 // Poliklinik yang tampil duluan (sebelum diklik "Tampilkan Semua")
@@ -105,13 +105,6 @@ export default function DoctorSearch({ schedule, isLive }: Props) {
               Jadwal Praktik Dokter
             </h2>
           </div>
-
-          {isLive ? (
-          ) : (
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-medium text-amber-700">
-              <TriangleAlert size={13} /> Menampilkan data cadangan (sumber sedang tidak terjangkau)
-            </span>
-          )}
         </div>
 
         {visibleGroups.map((group) => (
