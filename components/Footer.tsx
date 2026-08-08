@@ -61,10 +61,10 @@ export default function Footer() {
                 Prambanan, Sleman, Yogyakarta
               </li>
               <li className="flex items-center gap-2">
-                <Phone size={15} /> (0274) 496111
+                <Phone size={15} />  (0274)7374509
               </li>
               <li className="flex items-center gap-2">
-                <Mail size={15} /> info@rspkuprambanan.com
+                <Mail size={15} /> rspkum.prambanan@gmail.com
               </li>
             </ul>
           </div>
