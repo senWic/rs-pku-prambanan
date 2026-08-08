@@ -1,4 +1,5 @@
 import { Instagram, Facebook, Youtube, MapPin, Phone, Mail } from "lucide-react";
+import Image from "next/image";
 
 const COLUMNS = [
   {
@@ -17,7 +18,12 @@ const COLUMNS = [
 
 export default function Footer() {
   return (
-    <footer id="kontak" className="bg-navy-900 py-16 text-cream">
+    <footer id="kontak" className="relative overflow-hidden bg-navy-900 py-16 text-cream">
+        <div
+          className="pointer-events-none absolute inset-0 bg-repeat opacity-[0.06]"
+          style={{ backgroundImage: "url('/footer-web1.png')", backgroundSize: "280px" }}
+        />
+        <div className="relative">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
@@ -69,6 +75,7 @@ export default function Footer() {
           © {new Date().getFullYear()} RS PKU Prambanan. Seluruh hak cipta dilindungi.
         </div>
       </div>
+    </div>
     </footer>
   );
 }
