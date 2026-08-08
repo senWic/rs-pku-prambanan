@@ -18,12 +18,11 @@ const COLUMNS = [
 
 export default function Footer() {
   return (
-    <footer id="kontak" className="relative overflow-hidden bg-navy-900 py-16 text-cream">
-        <div
-          className="pointer-events-none absolute inset-0 bg-repeat opacity-[0.06]"
-          style={{ backgroundImage: "url('/footer-web1.png')", backgroundSize: "280px" }}
-        />
-        <div className="relative">
+    <footer
+        id="kontak"
+        className="relative bg-navy-900 bg-center bg-cover bg-no-repeat py-16 text-cream"
+        style={{ backgroundImage: "url('/footer-web1.png')" }}
+      >
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
@@ -75,7 +74,6 @@ export default function Footer() {
           © {new Date().getFullYear()} RS PKU Prambanan. Seluruh hak cipta dilindungi.
         </div>
       </div>
-    </div>
     </footer>
   );
 }
