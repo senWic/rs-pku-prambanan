@@ -1,30 +1,22 @@
 import { ArrowRight, CalendarSearch } from "lucide-react";
+import Image from "next/image";
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-navy-700">
       <div className="absolute inset-0 bg-grid-pattern opacity-30" />
 
-      {/* Candi silhouette signature — nods to Prambanan without being literal */}
-      <svg
-        className="pointer-events-none absolute bottom-0 right-0 h-[70%] w-auto opacity-[0.14] sm:opacity-20"
-        viewBox="0 0 600 400"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M420 400V300L440 260V200L460 170V120L480 90V60L500 20L520 60V120L540 170V200L560 260V300L580 400H420Z"
-          fill="#F7F5F1"
+      {/* Foto Direktur */}
+      <div className="pointer-events-none absolute bottom-0 right-6 h-[85%] w-auto sm:right-12">
+        <Image
+          src="/direktur.png"
+          alt="Direktur RS PKU Prambanan"
+          width={400}
+          height={600}
+          className="h-full w-auto object-contain object-bottom"
+          priority
         />
-        <path
-          d="M280 400V320L300 280V220L320 190V150L340 110V80L360 40L380 80V150L400 190V220L420 280V320L440 400H280Z"
-          fill="#F7F5F1"
-        />
-        <path
-          d="M140 400V340L160 300V250L180 220V180L200 150L220 180V220L240 250V300L260 340V400H140Z"
-          fill="#F7F5F1"
-        />
-      </svg>
+      </div>
 
       <div className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <div className="max-w-xl">
