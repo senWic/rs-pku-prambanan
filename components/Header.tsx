@@ -21,10 +21,10 @@ export default function Header() {
       <div className="bg-navy-900 text-cream/90">
         <div className="mx-auto flex max-w-6xl items-center justify-end gap-5 px-6 py-1.5 text-xs">
           <a href="tel:0274496111" className="flex items-center gap-1.5 hover:text-white">
-            <Phone size={13} /> IGD 24 Jam: (0274) 496111
+            <Phone size={13} /> IGD 24 Jam: (0274)7374509
           </a>
           <a
-            href="https://wa.me/6281200000000"
+            href="https://wa.me/6289505699944"
             className="hidden items-center gap-1.5 hover:text-white sm:flex"
           >
             <MessageCircle size={13} /> WhatsApp
