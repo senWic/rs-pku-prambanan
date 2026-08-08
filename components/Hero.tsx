@@ -18,7 +18,7 @@ export default function Hero() {
         }}
       />
       {/* Foto Direktur */}
-      <div className="pointer-events-none absolute bottom-0 right-6 h-[85%] w-auto sm:right-12">
+     <div className="pointer-events-none absolute bottom-0 right-4 h-[55%] w-auto sm:right-12 sm:h-[85%]">
         <Image
           src="/direktur.png"
           alt="Direktur RS PKU Prambanan"
@@ -30,7 +30,7 @@ export default function Hero() {
           />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32">
+      <div className="relative mx-auto max-w-6xl px-6 pb-64 pt-24 sm:pb-32 sm:pt-32">
         <div className="max-w-xl">
           <p className="mb-4 text-s font-semibold uppercase tracking-[0.2em] text-maroon-400">
             RS PKU Prambanan
