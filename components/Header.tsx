@@ -27,7 +27,7 @@ export default function Header() {
 
   return (
     <div className="sticky top-0 z-50">
-      {/* Top utility bar - tetap sama */}
+      {/* Top utility bar */}
       <div className="bg-navy-900 text-cream/90">
         <div className="mx-auto flex max-w-6xl items-center justify-end gap-5 px-6 py-1.5 text-xs">
           <a href="tel:0274496111" className="flex items-center gap-1.5 hover:text-white">
@@ -60,7 +60,7 @@ export default function Header() {
             {NAV_LINKS.map((link) => (
               <div
                 key={link.label}
-                className="relative"
+                className="relative py-2" // Tambahkan padding vertical
                 onMouseEnter={() => link.dropdown && setDropdownOpen(true)}
                 onMouseLeave={() => link.dropdown && setDropdownOpen(false)}
               >
@@ -72,9 +72,12 @@ export default function Header() {
                   {link.dropdown && <ChevronDown size={16} />}
                 </a>
                 
-                {/* Dropdown Menu */}
+                {/* Dropdown Menu - perbaiki positioning */}
                 {link.dropdown && dropdownOpen && (
-                  <div className="absolute left-0 mt-2 w-48 rounded-lg bg-white shadow-lg ring-1 ring-navy-100">
+                  <div 
+                    className="absolute left-0 mt-0 w-48 rounded-lg bg-white shadow-lg ring-1 ring-navy-100"
+                    // Hapus mt-2, ganti dengan mt-0
+                  >
                     {link.dropdown.map((item) => (
                       <a
                         key={item.label}
@@ -118,7 +121,6 @@ export default function Header() {
                 >
                   {link.label}
                 </a>
-                {/* Dropdown items for mobile */}
                 {link.dropdown && (
                   <div className="ml-4 flex flex-col gap-1 border-l-2 border-maroon-200 pl-4">
                     {link.dropdown.map((item) => (
