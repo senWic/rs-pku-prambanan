@@ -6,13 +6,19 @@ import About from "@/components/About";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import EmergencyFab from "@/components/EmergencyFab";
+import { fetchSchedule } from "@/lib/fetchSchedule";
 
-export default function Home() {
+// Refresh this page's data at most once per hour
+export const revalidate = 3600;
+
+export default async function Home() {
+  const { entries, isLive } = await fetchSchedule();
+
   return (
     <main>
       <Header />
       <Hero />
-      <DoctorSearch />
+      <DoctorSearch schedule={entries} isLive={isLive} />
       <Services />
       <About />
       <CTA />
