@@ -24,7 +24,7 @@ export default function Footer() {
         style={{ backgroundImage: "url('/footer-web1.png')" }}
       >
       <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
             <p className="font-display text-lg font-semibold">RS PKU Prambanan</p>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-cream/60">
