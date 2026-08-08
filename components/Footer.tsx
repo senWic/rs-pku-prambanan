@@ -57,8 +57,7 @@ export default function Footer() {
             <h3 className="mb-3 text-sm font-semibold text-cream">Kontak</h3>
             <ul className="space-y-2.5 text-sm text-cream/60">
               <li className="flex items-start gap-2">
-                <MapPin size={15} className="mt-0.5 shrink-0" /> Jl. Raya
-                Prambanan, Sleman, Yogyakarta
+                <MapPin size={15} className="mt-0.5 shrink-0" /> Jalan Raya Batas No.Km.46, Sawah, Sanggrahan, Kec. Prambanan, Kabupaten Klaten, Jawa Tengah 57454
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={15} />  (0274)7374509
