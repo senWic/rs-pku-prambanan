@@ -107,9 +107,6 @@ export default function DoctorSearch({ schedule, isLive }: Props) {
           </div>
 
           {isLive ? (
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700">
-              <RadioTower size={13} /> Data langsung dari sistem RS
-            </span>
           ) : (
             <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-medium text-amber-700">
               <TriangleAlert size={13} /> Menampilkan data cadangan (sumber sedang tidak terjangkau)
