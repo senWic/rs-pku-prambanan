@@ -11,13 +11,13 @@ export default function EmergencyFab() {
       {open && (
         <>
           <a
-            href="tel:0274496111"
+            href="tel: 02747374509"
             className="flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-medium text-navy-700 shadow-lg"
           >
             <Phone size={16} className="text-maroon-600" /> Telepon IGD
           </a>
           <a
-            href="https://wa.me/6281200000000"
+            href="https://wa.me/6289505699944"
             className="flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-medium text-navy-700 shadow-lg"
           >
             <MessageCircle size={16} className="text-green-600" /> WhatsApp
