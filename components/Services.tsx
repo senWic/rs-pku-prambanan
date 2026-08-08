@@ -1,17 +1,33 @@
 import { HeartPulse, Stethoscope, Baby, Syringe, Bed, Ambulance } from "lucide-react";
+import Image from "next/image";
 
 const SERVICES = [
   { icon: Ambulance, name: "IGD 24 Jam", desc: "Penanganan darurat setiap saat, siap siaga tanpa henti." },
-  { icon: Stethoscope, name: "Rawat Jalan", desc: "Poliklinik spesialis dengan jadwal dokter yang fleksibel." },
+  { icon: Syringe, name: "Vaksinasi", desc: "Melayani berbagai kebutuhan vaksinasi, termasuk vaksin internasional untuk perjalanan luar negeri, haji, dan umrah." },
   { icon: Bed, name: "Rawat Inap", desc: "Ruang perawatan nyaman dengan berbagai kelas kamar." },
-  { icon: HeartPulse, name: "Jantung & Pembuluh Darah", desc: "Pemeriksaan dan konsultasi kardiologi terpadu." },
+  { icon: HeartPulse, name: "Hemodialisa", desc: "Layanan cuci darah dengan tenaga profesional dan fasilitas yang mendukung kenyamanan serta keamanan pasien." },
   { icon: Baby, name: "Kebidanan & Anak", desc: "Pendampingan kehamilan, persalinan, hingga tumbuh kembang anak." },
-  { icon: Syringe, name: "Laboratorium & Radiologi", desc: "Penunjang diagnostik lengkap dan hasil yang akurat." },
+  { icon: Stethoscope, name: "Laboratorium & Radiologi", desc: "Penunjang diagnostik lengkap dan hasil yang akurat." },
 ];
 
 export default function Services() {
   return (
-    <section id="layanan" className="py-20">
+    <section id="layanan" className="relative overflow-hidden py-20">
+        {/* Tekstur pattern, ukuran asli sama kayak Hero */}
+        <div
+          className="absolute inset-0 bg-repeat opacity-20"
+          style={{ backgroundImage: "url('/footer-web1.png')" }}
+        />
+        {/* Radial: tepi lebih jelas, makin ke tengah makin transparan */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at center, #F7F5F1 0%, #F7F5F1 40%, transparent 100%)",
+          }}
+        />
+
+  <div className="relative mx-auto max-w-6xl px-6">
       <div className="mx-auto max-w-6xl px-6">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-maroon-600">
           Layanan Unggulan
@@ -37,6 +53,7 @@ export default function Services() {
           ))}
         </div>
       </div>
+    </div>
     </section>
   );
 }
