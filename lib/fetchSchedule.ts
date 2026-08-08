@@ -18,10 +18,12 @@ function toHHMM(time: string): string {
 
 function parseSchedule(html: string): ScheduleEntry[] {
   const entries: ScheduleEntry[] = [];
-  const rowMatches = html.matchAll(/<tr>([\s\S]*?)<\/tr>/gi);
+  const rowMatches = Array.from(html.matchAll(/<tr>([\s\S]*?)<\/tr>/gi));
 
   for (const row of rowMatches) {
-    const cellMatches = [...row[1].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)];
+    const cellMatches = Array.from(
+      row[1].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)
+    );
     if (cellMatches.length !== 5) continue;
 
     const [day, doctor, poli, start, end] = cellMatches.map((m) =>
